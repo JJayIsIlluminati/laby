@@ -1,0 +1,42 @@
+printf("Zad 40\n");
+	printf("Program sluzy do obliczenia odleglosci podanego pkt\n od poczatku ukladu wspolrzednych\n");
+	double h, i;
+	printf("Podaj liczby:\n");
+	if (scanf_s("%lf %lf", &h, &i) != 2 || getchar() != '\n')
+	{
+		printf("to nie sa liczby\n");
+	}
+	else
+	{
+		//klasyczny
+		double kl = sqrt(pow(h, 2) + pow(h, 2));
+		//specjalny
+		double sp=0;
+		double modx = abs(h);
+		double mody = abs(i);
+		if (h == 0) 
+		{
+			sp = mody;
+		}
+		else if (modx >= mody && h != 0)
+		{
+			sp = modx * sqrt(1 + pow(i / h, 2));
+		}
+		else if (mody >= modx && i != 0)
+		{
+			sp = modx * sqrt(1 + pow(h / i, 2));
+		}
+		if (kl == sp)
+		{
+			printf("ALGORYTMY DAJA TEN SAM WYNIK\nOdleglosc punktu (%lf, %lf) od (0, 0) wynosi: %lf\n", h, i, kl);
+		}
+		else 
+		{
+			printf("ALGORYTMY DAJA ROZNE WYNIKI\nOdleglosc punktu (%lf, %lf) od (0,0) wynosi:\n", h, i);
+			printf("-wg. algorytmu klasycznego %lf\n", kl);
+			printf("-wg. algorytmu specjalnego %lf\n", sp);
+			double blad = abs(kl - sp);
+			printf("Wartosc bezwzgledna roznicy miedzy wynikami: %lf\n", blad);
+		}
+	}
+	printf("Koniec programu.\n\n");
